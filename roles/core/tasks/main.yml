@@ -1,0 +1,14 @@
+---
+ - name: update pacman
+   shell:  sudo pacman -Sy --noconfirm --needed
+ - name:  install  base deps
+   shell:  sudo pacman -S --noconfirm --needed sudo openssh base-devel git keepass firefox
+ - git: repo=https://aur.archlinux.org/package-query.git
+        dest=~/src/package-query
+ - shell: makepkg -si --noconfirm --needed 
+          chdir=~/src/package-query
+ - git: repo=https://aur.archlinux.org/yaourt.git
+        dest=~/src/yaourt
+ - shell: makepkg -si --noconfirm --needed
+          chdir=~/src/yaourt
+ - shell: yaourt -S --noconfirm --needed yandex-disk  google-chrome vivaldi

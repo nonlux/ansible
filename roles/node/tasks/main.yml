@@ -1,0 +1,12 @@
+---
+ - shell: yaourt -S --noconfirm --needed nodejs npm
+ - npm: name={{ item }} state=latest global=yes
+   become: yes
+   with_items:
+     - yo
+ - git: repo=git@github.com:nonlux/generator-prj.git
+        dest=~/src/generator-prj
+ - shell: npm link
+   become: yes
+   args:
+     chdir: /home/nonlux/src/generator-prj

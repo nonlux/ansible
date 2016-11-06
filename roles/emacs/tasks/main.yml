@@ -1,0 +1,8 @@
+---
+ - raw:  sudo pacman -S --noconfirm --needed emacs 
+ - git: repo=git@github.com:nonlux/emacs.d.git
+        dest=~/src/emacs.d
+ - file: src=~/src/emacs.d
+         dest=~/.emacs.d
+         state=link
+         force=yes

@@ -1,0 +1,8 @@
+name: ans
+root: /home/nonlux/src/ansible
+pre: emacs --eval "(setq server-name \"ans\")" --daemon
+startup_window: editor
+windows:
+  - none: ''
+  - editor: emacsclient -s ans ./
+  - zsh: ''

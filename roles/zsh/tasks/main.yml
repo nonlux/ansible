@@ -1,0 +1,23 @@
+---
+ - shell: yaourt -S --noconfirm  --needed {{ item }}
+   with_items:
+     - zsh
+     - ack
+     - hub-git
+     - ruby
+
+ - gem: name={{ item }} state=latest
+   with_items:
+     - github_cli
+ - git: repo=git@github.com:nonlux/dot.git
+        dest=~/src/dot
+ - git: repo=git://github.com/zsh-users/antigen.git
+        dest=~/src/dot/zsh/vendor/antigen
+ - file: src={{ item.src }}
+         dest={{ item.dest }}
+         state=link
+         force=yes
+   with_items:
+     - { src: '~/src/dot/zsh/.zshrc', dest: '~/.zshrc'}
+     - { src: '~/src/dot/git/.gitconfig', dest: '~/.gitconfig'}
+     - { src: '~/src/dot/fonts', dest: '~/.fonts'}

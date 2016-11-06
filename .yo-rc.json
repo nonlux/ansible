@@ -1,0 +1,12 @@
+{
+  "generator-prj": {
+    "projectName": "ansible",
+    "isGithub": true,
+    "description": "my ansible scripts",
+    "projectType": "ansible",
+    "shortName": "ans",
+    "isBabel": false,
+    "isEslint": false,
+    "isWebpack": false
+  }
+}

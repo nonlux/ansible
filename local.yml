@@ -1,0 +1,11 @@
+---
+- hosts: dev
+#zsh-users/zsh-autosuggestions  become_user: root
+  become_method: sudo
+  roles:
+  # - core
+  # - tmux
+  - zsh
+  # - emacs
+  # - node
+# - { role: emacs,  become: yes}
