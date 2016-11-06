@@ -2,7 +2,8 @@
 *\#*
 \#*
 *.log
-
-*.retry
 *.pyc
 *.swp
+
+
+*.retry
