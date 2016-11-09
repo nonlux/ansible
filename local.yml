@@ -3,9 +3,10 @@
 #zsh-users/zsh-autosuggestions  become_user: root
   become_method: sudo
   roles:
-  # - core
-  # - tmux
+  - core
+  - tmux
   - zsh
-  # - emacs
-  # - node
+  - emacs
+  - node
+  - myprj
 # - { role: emacs,  become: yes}

@@ -1,0 +1,8 @@
+#task ansible template
+---
+ - git: repo=git@github.com:nonlux/{{item}}.git dest=~/src/{{item}}
+   with_items:
+     - nlx-eslint-config
+     - nlx-babel-config
+     - nlx-webpack-config
+     

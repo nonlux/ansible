@@ -5,6 +5,10 @@
      - ack
      - hub-git
      - ruby
+     - pygmentize
+     - pkgfile
+     - git
+     - git-extras
 
  - gem: name={{ item }} state=latest
    with_items:
