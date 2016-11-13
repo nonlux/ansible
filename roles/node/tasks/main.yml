@@ -4,6 +4,7 @@
    become: yes
    with_items:
      - yo
+     - bitbucket-cli
  - git: repo=git@github.com:nonlux/generator-prj.git
         dest=~/src/generator-prj
  - shell: npm link
