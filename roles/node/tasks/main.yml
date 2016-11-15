@@ -1,13 +1,18 @@
 ---
  - shell: yaourt -S --noconfirm --needed nodejs npm
- - npm: name={{ item }} state=latest global=yes
-   become: yes
+ - file: path=~/.npm-global state=directory
+ - shell: npm config set registry 'http://registry.npmjs.org'
+ - shell: npm config set prefix '~/.npm-global'
+ - shell: npm config set progress false
+ - shell: npm install -g {{ item }}
    with_items:
+     - npm
+     - npm-proxy-cache
+ - shell: npm config set proxy http://localhost:8080/ && npm config set https-proxy http://localhost:8080/ && npm config set strict-ssl false
+ - npm: name={{ item }} state=latest global=yes
+   with_items:
+     - gulp
+     - npm-cache
      - yo
      - bitbucket-cli
- - git: repo=git@github.com:nonlux/generator-prj.git
-        dest=~/src/generator-prj
- - shell: npm link
-   become: yes
-   args:
-     chdir: /home/nonlux/src/generator-prj
+     - bower

@@ -9,6 +9,7 @@
      - pkgfile
      - git
      - git-extras
+     - the_silver_searcher
 
  - gem: name={{ item }} state=latest
    with_items:

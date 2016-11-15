@@ -5,4 +5,12 @@
      - nlx-eslint-config
      - nlx-babel-config
      - nlx-webpack-config
-     
+     - generator-prj
+ - shell: npm install && npm link
+   args:
+     chdir: ~/src/{{ item }}
+   with_items:
+     - nlx-eslint-config
+     - nlx-babel-config
+     - nlx-webpack-config
+     - generator-prj
