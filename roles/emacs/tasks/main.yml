@@ -1,5 +1,6 @@
 ---
- - raw:  sudo pacman -S --noconfirm --needed emacs 
+ - apt: name="emacs" state="latest" 
+   become: yes
  - git: repo=git@github.com:nonlux/emacs.d.git
         dest=~/src/emacs.d
  - file: src=~/src/emacs.d

@@ -1,0 +1,17 @@
+---
+- hosts:  all
+  roles:
+    - init
+    - cli
+
+- hosts: dev
+  roles:
+    - dev
+    - emacs
+    - node
+
+- hosts: desktop
+  roles:
+   - desktop
+   - unity
+ 

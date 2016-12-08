@@ -1,0 +1,11 @@
+---
+ - git:
+    repo: https://github.com/github/hub.git
+    dest: ~/.tools/hub
+ - file: path=~/.build state=directory
+ - command: make clean 
+   args:
+     chdir: ~/.tools/hub
+ - command: make install prefix=$HOME
+   args:
+     chdir: ~/.tools/hub

@@ -1,8 +1,0 @@
----
- - shell: yaourt -S --noconfirm --needed tmux tmuxinator
- - git: repo=git@github.com:nonlux/tmux-config.git
-        dest=~/src/tmux-config
- - file: src=~/src/tmux-config/.tmux.conf
-         dest=~/.tmux.conf
-         state=link
-         force=yes

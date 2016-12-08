@@ -1,0 +1,17 @@
+---
+ - apt: name={{ item }} state="latest"
+   become: yes
+   with_items:
+    - silversearcher-ag
+    - ruby
+    - ruby-dev
+    - git-extras
+    - golang-go
+    - python-pygments
+
+ - gem: name={{ item }} state="present"
+   with_items:
+    - tmuxinator
+    - bundler
+
+ - include: hub.yml

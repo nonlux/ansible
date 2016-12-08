@@ -1,14 +1,16 @@
 ---
- - shell: yaourt -S --noconfirm --needed nodejs npm
+ - apt: name={{ item }} state="latest"
+   become: yes
+   with_items:
+     - nodejs-legacy
+     - npm
  - file: path=~/.npm-global state=directory
  - shell: npm config set registry 'http://registry.npmjs.org'
  - shell: npm config set prefix '~/.npm-global'
- - shell: npm config set progress false
  - shell: npm install -g {{ item }}
    with_items:
      - npm
      - npm-proxy-cache
- - shell: npm config set proxy http://localhost:8080/ && npm config set https-proxy http://localhost:8080/ && npm config set strict-ssl false
  - npm: name={{ item }} state=latest global=yes
    with_items:
      - gulp

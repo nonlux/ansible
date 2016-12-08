@@ -1,0 +1,27 @@
+---
+ - apt: name={{ item }} state=latest
+   become: yes
+   with_items:
+    - zsh
+    - vim
+    - git
+    - tmux
+ - git: repo=git@github.com:nonlux/dot.git
+        dest=~/src/dot
+ - git: repo=git://github.com/zsh-users/antigen.git
+        dest=~/src/dot/zsh/vendor/antigen
+ - file: src={{ item.src }}
+         dest={{ item.dest }}
+         state=link
+         force=yes
+   with_items:
+     - { src: '~/src/dot/zsh/.zshrc', dest: '~/.zshrc'}
+     - { src: '~/src/dot/git/.gitconfig', dest: '~/.gitconfig'}
+     - { src: '~/src/dot/fonts', dest: '~/.fonts'}
+     - { src: '~/src/dot/tmux', dest: '~/.tmux'}
+     - { src: '~/src/dot/tmux/.tmux.conf', dest: '~/.tmux.conf'}
+ - git: repo=git@github.com:nonlux/tmux-config.git
+        dest=~/src/tmux-config
+
+ - command: usermod -s /bin/zsh {{ ansible_user }}
+   become: yes
