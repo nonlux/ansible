@@ -1,9 +1,18 @@
 ---
- - apt: name="emacs" state="latest" 
+ - apt: name={{ item }} state="latest" 
    become: yes
+   with_items:
+    - emacs
+    - git
+    - mercurial
+
  - git: repo=git@github.com:nonlux/emacs.d.git
         dest=~/src/emacs.d
  - file: src=~/src/emacs.d
          dest=~/.emacs.d
          state=link
          force=yes
+ - command: emacs --daemon
+   ignore_errors: yes
+   environment:
+     EMACS_INSTALL: 1
