@@ -1,20 +1,21 @@
 ---
+ - shell: "curl -sL https://deb.nodesource.com/setup_7.x | bash -"
+   become: yes
  - apt: name={{ item }} state="latest"
    become: yes
    with_items:
-     - nodejs-legacy
-     - npm
+     - nodejs
+     - build-essential
  - file: path=~/.npm-global state=directory
  - shell: npm config set registry 'http://registry.npmjs.org'
- - shell: npm config set prefix '~/.npm-global'
+ - shell: npm config set prefix '{{ ansible_env.HOME }}/.npm-global'
  - shell: npm install -g {{ item }}
    with_items:
      - npm
-     - npm-proxy-cache
- - npm: name={{ item }} state=latest global=yes
+     - yarn
+ - command: "yarn global add {{ item }} "
    with_items:
      - gulp
-     - npm-cache
      - yo
-     - bitbucket-cli
      - bower
+     - eslint
