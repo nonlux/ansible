@@ -20,8 +20,7 @@
      - { src: '~/src/dot/fonts', dest: '~/.fonts'}
      - { src: '~/src/dot/tmux', dest: '~/.tmux'}
      - { src: '~/src/dot/tmux/.tmux.conf', dest: '~/.tmux.conf'}
- - git: repo=git@github.com:nonlux/tmux-config.git
-        dest=~/src/tmux-config
-
- - command: usermod -s /bin/zsh {{ ansible_user }}
-   become: yes
+# - debug:
+#     msg: " {{ ansible_user }} "
+# - command: usermod -s /bin/zsh {{ ansible_user }}
+#   become: yes
