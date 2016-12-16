@@ -8,6 +8,7 @@
     - git-extras
     - golang-go
     - python-pygments
+    - graphicsmagick
 
  - gem: name={{ item }} state="present"
    with_items:
