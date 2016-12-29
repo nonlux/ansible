@@ -1,0 +1,16 @@
+---
+ - apt: name={{ item }} state=latest
+   become: yes
+   with_items:
+    - openssh-server
+
+ - copy:
+     src: sshd_config
+     dest: /etc/ssh/sshd_config
+     backup: yes
+     mode: "u=rw,g=r,o=r"
+
+- service:
+    name: sshd
+    state: restarted
+
